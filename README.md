@@ -7,6 +7,54 @@ This repository guide everybody to install arch linux on laptops or personal com
 
 ## Post installation
 
+### Configure your network (wired)
+If you have a wired network connection, enter the following 
+command.
+```
+ip link
+```
+to determine the interface name of your network adapter.
+
+Replaceing interfacename in the following command with the name 
+you retrieved 
+```
+systemctl enable dhcpcd@interfacename.service
+```
+to enable the ethernet connection.
+
+### Configure your network (wireless) ###
+If you have a wireless network, enter in the following commands
+to enable it.
+```
+ip link
+```
+to determine the interface name of your network adapter.
+```
+pacman -S iw wpa_supplicant
+```
+to install the necessary software.
+```
+pacman -S dialog
+```
+to install the Wi-Fi menu.
+```
+pacman -S wpa_actiond
+```
+to install the software that allows you to automatically connect
+to known networks.
+```
+systemctl enable netctl-auto@interfacename.service
+```
+to turn on the auto-connection service for your wireless adapter.
+
+Next time you reboot, type
+```
+wifi-menu interfacename
+```
+to access the wireless menu for your adapter.
+After you connect to the network for the first time, you will
+be automatically connected for subsequent boots.
+
 ### Set the timezone
 
 ### Sync the time and date with Network Time Protocal 
