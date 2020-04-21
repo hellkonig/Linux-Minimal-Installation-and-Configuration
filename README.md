@@ -77,3 +77,10 @@ If you install i3 as your window manager on your laptop, you probably find your 
 sudo tee /sys/class/backlight/intel_backlight/brightness <<< 400
 ```
 You can run this command on your command line, or put it in one bash script so that you can run it repeatly without too many typing.
+
+### Font Configuration
+
+References
+1. [Linux 桌面玩家指南：04. Linux 桌面系统字体配置要略](https://www.cnblogs.com/youxia/p/LinuxDesktop004.html)
+2. [Linux下终极字体配置方案](https://ohmyarch.github.io/2017/01/15/Linux%E4%B8%8B%E7%BB%88%E6%9E%81%E5%AD%97%E4%BD%93%E9%85%8D%E7%BD%AE%E6%96%B9%E6%A1%88/)
+3. [Linux字体美化实战(Fontconfig配置)](http://www.jinbuguo.com/gui/linux_fontconfig.html)
