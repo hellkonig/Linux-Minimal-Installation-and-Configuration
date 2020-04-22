@@ -1,5 +1,5 @@
-# Arch-Installation-guide
-This repository guide everybody to install arch linux on laptops or personal computers
+# Linux-Minimal-Installation-and-Configuration
+This repository is a guidance to install basic linux system on laptops or personal computers and configure it into a fully functioning operation system.
 
 ## Pre installation
 
