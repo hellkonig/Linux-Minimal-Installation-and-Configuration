@@ -3,6 +3,8 @@ This repository is a guidance to install basic linux system on laptops or person
 
 ## Pre installation
 
+Reference
+1. [Ubuntu UEFI Minimal Install](https://www.kgoettler.com/post/ubuntu-minimal/)
 ## Installation
 
 ## Post installation
