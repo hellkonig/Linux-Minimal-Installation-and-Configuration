@@ -1,0 +1,39 @@
+# Nord Darker — Alacritty colors mirrored from JetBrains theme XML
+
+[colors.primary]
+background = "#21252D"  # CONSOLE_BACKGROUND_KEY / editor background
+foreground = "#D8DEE9"  # default text
+
+[colors.cursor]
+text   = "#21252D"      # caret shows as light on dark in the IDE
+cursor = "#D8DEE9"      # CARET_COLOR
+
+[colors.selection]
+background = "#434C5E"  # SELECTION_BACKGROUND
+text       = "#81A1C1"  # IDE keeps selected text readable
+
+# 16-color palette mapped from CONSOLE_*_OUTPUT
+[colors.normal]
+black   = "#2E333F"     # CONSOLE_BLACK_OUTPUT
+red     = "#BF616A"     # CONSOLE_RED_OUTPUT (error)
+green   = "#A3BE8C"     # CONSOLE_GREEN_OUTPUT
+yellow  = "#EBCB8B"     # CONSOLE_YELLOW_OUTPUT
+blue    = "#88C0D0"     # CONSOLE_BLUE_OUTPUT (note: "blue" is the frost cyan in JetBrains mapping)
+magenta = "#B48EAD"     # CONSOLE_MAGENTA_OUTPUT
+cyan    = "#8FBCBB"     # CONSOLE_CYAN_OUTPUT
+white   = "#D8DEE9"     # CONSOLE_WHITE_OUTPUT / NORMAL_OUTPUT
+
+[colors.bright]
+black   = "#434C5E"     # CONSOLE_DARKGRAY_OUTPUT  (brighter than black)
+red     = "#BF616A"     # CONSOLE_RED_BRIGHT_OUTPUT (same as normal in theme)
+green   = "#A3BE8C"     # CONSOLE_GREEN_BRIGHT_OUTPUT
+yellow  = "#EBCB8B"     # CONSOLE_YELLOW_BRIGHT_OUTPUT
+blue    = "#81A1C1"     # CONSOLE_BLUE_BRIGHT_OUTPUT
+magenta = "#B48EAD"     # CONSOLE_MAGENTA_BRIGHT_OUTPUT
+cyan    = "#8FBCBB"     # CONSOLE_CYAN_BRIGHT_OUTPUT (same as normal)
+white   = "#ECEFF4"     # brighter Snow Storm (theme uses this widely)
+
+# Optional: add an "orange" index color (Aurora) used often in the IDE
+[[colors.indexed_colors]]
+index = 16
+color = "#D08770"       # Aurora orange (warnings, decorators, etc.)

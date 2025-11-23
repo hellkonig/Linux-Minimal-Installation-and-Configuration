@@ -1,0 +1,12 @@
+# ~/.config/wofi/config
+# Minimalist Wofi config for Nord Darker with app icons
+
+# Display mode (drun for desktop apps with icons)
+show=drun
+allow_images=true
+
+# Percentage-based width
+width=30%
+
+# Fuzzy matching for usability
+insensitive=false

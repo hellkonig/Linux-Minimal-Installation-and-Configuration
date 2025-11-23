@@ -1,0 +1,67 @@
+/* ~/.config/wofi/style.css */
+/* Minimalist Nord Darker theme for Wofi, matching nord-darker.toml */
+
+/* Main window */
+window {
+    background-color: #21252D; /* Nord Darker primary background */
+    color: #D8DEE9; /* Nord Darker text */
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 16px;
+    border: 3px solid #2E333F; /* Nord Darker black for subtle border */
+    margin: 0px; /* Ensure no external margin interferes */
+}
+
+/* Outer box (container for input and entries) */
+#outer-box {
+    background-color: #21252D; /* Match window background */
+    border: none; /* No additional border */
+    margin: 8px; /* Internal spacing */
+    padding: 0px; /* No extra padding to avoid clipping */
+}
+
+/* Input field */
+#input {
+    background-color: #21252D; /* Nord Darker background */
+    color: #D8DEE9; /* Nord Darker text */
+    padding: 0.25em;
+    border: none; /* No border on input */
+    box-shadow: none;
+    margin: 8px;
+}
+
+/* Application icons */
+image {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+/* Entry list */
+#entry {
+    background-color: #21252D; /* Nord Darker background */
+    color: #D8DEE9; /* Nord Darker text */
+    padding: 0.25em;
+    border: none; /* No border on entries */
+}
+
+/* Selected entry */
+#entry:selected {
+    background-color: #434C5E; /* Nord Darker selection background */
+    color: #81A1C1; /* Nord Darker selection text/accent */
+    border: none;
+}
+
+/* Matching text in entries */
+#text:selected {
+    color: #88C0D0; /* Nord Darker blue for matches */
+    border: none;
+}
+
+/* Scrollbar (minimal) */
+#scroll {
+    background-color: #21252D; /* Nord Darker background */
+    border: none;
+}
+
+#scroll > #inner-box > #entry {
+    margin-right: 8px;
+}

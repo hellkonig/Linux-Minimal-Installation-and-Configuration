@@ -1,0 +1,33 @@
+/* ~/.config/gtk-3.0/gtk.css */
+
+/* Primary colors from Nord Darker */
+@define-color theme_bg_color #21252D; /* Primary background */
+@define-color theme_fg_color #D8DEE9; /* Primary foreground (text) */
+@define-color theme_base_color #21252D; /* Base background for widgets */
+@define-color theme_text_color #D8DEE9; /* Text color */
+@define-color theme_selected_bg_color #434C5E; /* Selection background */
+@define-color theme_selected_fg_color #81A1C1; /* Selection text */
+@define-color cursor_color #D8DEE9; /* Cursor */
+@define-color theme_cursor_background_color #21252D; /* Cursor background */
+
+/* Accent and contextual colors from Nord Darker */
+@define-color accent_color #81A1C1; /* Bright blue for buttons, highlights */
+@define-color error_color #BF616A; /* Red for errors */
+@define-color warning_color #D08770; /* Orange for warnings */
+@define-color success_color #A3BE8C; /* Green for success */
+@define-color link_color #88C0D0; /* Blue for links */
+@define-color insensitive_fg_color #434C5E; /* Dimmed text (disabled widgets) */
+@define-color insensitive_bg_color #2E333F; /* Dimmed background (disabled widgets) */
+
+button {
+    background-color: #2E333F; /* Nord Darker black */
+    color: #D8DEE9; /* Nord Darker text */
+}
+button:hover {
+    background-color: #434C5E; /* Nord Darker selection background */
+    color: #81A1C1; /* Nord Darker selection text */
+}
+button:active {
+    background-color: #81A1C1; /* Nord Darker bright blue */
+    color: #21252D;
+}
