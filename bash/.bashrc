@@ -100,7 +100,6 @@ alias l='ls -CF'
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-alias dotfiles='/usr/bin/git --git-dir=/home/liang/.cfg/ --work-tree=/home/liang'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
