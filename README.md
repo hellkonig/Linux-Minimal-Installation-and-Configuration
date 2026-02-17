@@ -98,7 +98,7 @@ $ sudo apt install fcitx-googlepinyin
 
 Run `im-config` and change the input method to `fcitx`, reboot the server.
 
-Run `fcitx-configtool` after login, click `+` button to add new input method. In the popup selection box uncheck “Only Show Current Language” and then search for “google” to add Google Pinyin”.
+Run `fcitx-configtool` after login, click `+` button to add new input method. In the popup selection box uncheck "Only Show Current Language" and then search for "google" to add Google Pinyin".
 
 In `Global Config` tab, choose the shortcut keys for switching input methods and also add Google Pinyin input method.
 
@@ -136,3 +136,69 @@ You also need to log off from the window manager (X window system) to apply the 
 References
 1. [Making better use of the Caps Lock key in Linux](https://www.jveweb.net/en/archives/2010/11/making-better-use-of-the-caps-lock-key-in-linux.html)
 2. [Keycodes swap](https://askubuntu.com/a/1006087)
+
+## Dotfiles Setup
+
+This repository uses [GNU Stow](https://www.gnu.org/software/stow/) to manage configuration files. Stow creates symlinks from your home directory to the config files in this repo, making it easy to version control and update your dotfiles.
+
+### Install Stow
+
+**Debian/Ubuntu:**
+```bash
+sudo apt install stow
+```
+
+**Arch Linux:**
+```bash
+sudo pacman -S stow
+```
+
+### Clone and Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/hellkonig/Linux-Minimal-Installation-and-Configuration.git ~/dotfiles
+cd ~/dotfiles
+
+# Stow all packages
+stow -t ~ alacritty bash fontconfig gtk-3.0 gtk-4.0 nvim sway waybar wofi
+```
+
+### Available Packages
+
+| Package | Description | Config Location |
+|---------|-------------|-----------------|
+| `alacritty` | Terminal emulator | `~/.config/alacritty/` |
+| `bash` | Bash configuration | `~/.bashrc`, `~/.bash_profile` |
+| `fontconfig` | Font configuration | `~/.config/fontconfig/` |
+| `gtk-3.0` | GTK3 theme settings | `~/.config/gtk-3.0/` |
+| `gtk-4.0` | GTK4 theme settings | `~/.config/gtk-4.0/` |
+| `nvim` | Neovim editor | `~/.config/nvim/` |
+| `sway` | Wayland window manager | `~/.config/sway/` |
+| `waybar` | Status bar for Wayland | `~/.config/waybar/` |
+| `wofi` | Application launcher | `~/.config/wofi/` |
+
+### Managing Packages
+
+```bash
+# Stow specific packages only
+stow -t ~ sway waybar wofi
+
+# Remove (unstow) a package
+stow -t ~ -D alacritty
+
+# Restow (refresh all links)
+stow -t ~ -R sway
+
+# Dry run (see what would happen without making changes)
+stow -t ~ -n sway
+```
+
+### Important Notes
+
+- **Backup:** If a config directory already exists (e.g., `~/.config/alacritty`), back it up first:
+  ```bash
+  mv ~/.config/alacritty ~/.config/alacritty.backup.$(date +%Y%m%d)
+  ```
+- **Target directory:** Always use `-t ~` to ensure symlinks are created in your home directory
+- **Relative paths:** Stow uses relative paths, so your home directory can move between systems
