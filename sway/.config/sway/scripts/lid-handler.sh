@@ -6,7 +6,11 @@ LAPTOP_SCREEN="eDP-1"
 LID_STATE="/proc/acpi/button/lid/LID0/state"
 
 has_external() {
-    swaymsg -t get_outputs 2>/dev/null | jq -e '.[] | select(.active and .name != "'$LAPTOP_SCREEN'")' >/dev/null
+    local count
+    count=$(swaymsg -t get_outputs 2>/dev/null | grep -o '"name": "'"$LAPTOP_SCREEN"'"' | wc -l)
+    local total
+    total=$(swaymsg -t get_outputs 2>/dev/null | grep -o '"active": true' | wc -l)
+    [ "$total" -gt "$count" ]
 }
 
 lid_state() {
