@@ -86,25 +86,21 @@ References
 1. [Linux 桌面玩家指南：04. Linux 桌面系统字体配置要略](https://www.cnblogs.com/youxia/p/LinuxDesktop004.html)
 2. [Linux字体美化实战(Fontconfig配置)](http://www.jinbuguo.com/gui/linux_fontconfig.html)
 
-### Chinese input method installation
+### Chinese input method installation (for Sway/Wayland)
 
-We would need to install `fcitx` and `fcitx-googlepinyin` first.
+Install fcitx5 and Chinese input method addons:
+```bash
+sudo apt install --no-install-recommends fcitx5 fcitx5-config-qt fcitx5-frontend-all
+sudo apt install fcitx5-chinese-addons
+sudo apt install qt6-wayland
 ```
-# Install fcitx input method system
-$ sudo apt install fcitx-bin
-# Install Google Pinyin Chinese input method
-$ sudo apt install fcitx-googlepinyin
-```
 
-Run `im-config` and change the input method to `fcitx`, reboot the server.
+Run `fcitx5-config-qt` to configure input methods. Click the `+` button to add Chinese input methods (e.g., Pinyin).
 
-Run `fcitx-configtool` after login, click `+` button to add new input method. In the popup selection box uncheck "Only Show Current Language" and then search for "google" to add Google Pinyin".
-
-In `Global Config` tab, choose the shortcut keys for switching input methods and also add Google Pinyin input method.
+The fcitx5 tray icon will appear in the waybar. Use `Ctrl+Space` (default) to toggle between English and Chinese input.
 
 References
-1. [Install Google Pinyin input method on Ubuntu/Debian](https://mrzhubin.wordpress.com/2019/09/20/install-google-pinyin-input-method-on-debian/)
-2. [Fcitx Chinese Input Setup on Ubuntu for Gaming](https://leimao.github.io/blog/Ubuntu-Gaming-Chinese-Input/)
+1. [Fcitx5 Chinese Input Setup on Ubuntu for Gaming](https://leimao.github.io/blog/Ubuntu-Gaming-Chinese-Input/)
 
 ### Swap Ctrl and Caps Lock
 
@@ -161,7 +157,7 @@ git clone https://github.com/hellkonig/Linux-Minimal-Installation-and-Configurat
 cd ~/dotfiles
 
 # Stow all packages
-stow -t ~ alacritty bash fontconfig gtk-3.0 gtk-4.0 nvim sway waybar wofi
+stow -t ~ alacritty bash fcitx5 fontconfig gtk-3.0 gtk-4.0 nvim sway waybar wofi
 ```
 
 ### Available Packages
@@ -170,6 +166,7 @@ stow -t ~ alacritty bash fontconfig gtk-3.0 gtk-4.0 nvim sway waybar wofi
 |---------|-------------|-----------------|
 | `alacritty` | Terminal emulator | `~/.config/alacritty/` |
 | `bash` | Bash configuration | `~/.bashrc`, `~/.bash_profile` |
+| `fcitx5` | Chinese input method (Sway) | `~/.config/sway/config.d/fcitx5.conf` |
 | `fontconfig` | Font configuration | `~/.config/fontconfig/` |
 | `gtk-3.0` | GTK3 theme settings | `~/.config/gtk-3.0/` |
 | `gtk-4.0` | GTK4 theme settings | `~/.config/gtk-4.0/` |
@@ -182,7 +179,7 @@ stow -t ~ alacritty bash fontconfig gtk-3.0 gtk-4.0 nvim sway waybar wofi
 
 ```bash
 # Stow specific packages only
-stow -t ~ sway waybar wofi
+stow -t ~ fcitx5 sway waybar wofi
 
 # Remove (unstow) a package
 stow -t ~ -D alacritty
