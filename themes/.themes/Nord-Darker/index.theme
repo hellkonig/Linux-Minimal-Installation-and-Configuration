@@ -1,0 +1,8 @@
+[X-GNOME-Metatheme]
+Name=Nord-Darker
+Comment=Nord Darker Theme for GTK3
+Encoding=UTF-8
+GtkTheme=Nord-Darker
+IconTheme=Adwaita
+CursorTheme=Adwaita
+CursorSize=24
