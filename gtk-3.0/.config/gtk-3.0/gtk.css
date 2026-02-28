@@ -1,33 +1,300 @@
-/* ~/.config/gtk-3.0/gtk.css */
+/* ~/.config/gtk-3.0/gtk.css - Nord Darker Theme */
 
-/* Primary colors from Nord Darker */
-@define-color theme_bg_color #21252D; /* Primary background */
-@define-color theme_fg_color #D8DEE9; /* Primary foreground (text) */
-@define-color theme_base_color #21252D; /* Base background for widgets */
-@define-color theme_text_color #D8DEE9; /* Text color */
-@define-color theme_selected_bg_color #434C5E; /* Selection background */
-@define-color theme_selected_fg_color #81A1C1; /* Selection text */
-@define-color cursor_color #D8DEE9; /* Cursor */
-@define-color theme_cursor_background_color #21252D; /* Cursor background */
+/* ===== BASE WIDGET OVERRIDES ===== */
 
-/* Accent and contextual colors from Nord Darker */
-@define-color accent_color #81A1C1; /* Bright blue for buttons, highlights */
-@define-color error_color #BF616A; /* Red for errors */
-@define-color warning_color #D08770; /* Orange for warnings */
-@define-color success_color #A3BE8C; /* Green for success */
-@define-color link_color #88C0D0; /* Blue for links */
-@define-color insensitive_fg_color #434C5E; /* Dimmed text (disabled widgets) */
-@define-color insensitive_bg_color #2E333F; /* Dimmed background (disabled widgets) */
-
-button {
-    background-color: #2E333F; /* Nord Darker black */
-    color: #D8DEE9; /* Nord Darker text */
+.background { 
+    color: #D8DEE9; 
+    background-color: #21252D; 
 }
-button:hover {
-    background-color: #434C5E; /* Nord Darker selection background */
-    color: #81A1C1; /* Nord Darker selection text */
+
+.background:backdrop { 
+    color: #919190; 
+    background-color: #21252D; 
 }
-button:active {
-    background-color: #81A1C1; /* Nord Darker bright blue */
-    color: #21252D;
+
+.gtkstyle-fallback { 
+    color: #D8DEE9; 
+    background-color: #21252D; 
+}
+
+.gtkstyle-fallback:hover { 
+    color: #D8DEE9; 
+    background-color: #434C5E; 
+}
+
+.gtkstyle-fallback:active { 
+    color: #D8DEE9; 
+    background-color: #21252D; 
+}
+
+.gtkstyle-fallback:disabled { 
+    color: #434C5E; 
+    background-color: #2E333F; 
+}
+
+.gtkstyle-fallback:selected { 
+    color: #21252D; 
+    background-color: #81A1C1; 
+}
+
+/* Views */
+.view, iconview, .view text, iconview text, textview text { 
+    color: #D8DEE9; 
+    caret-color: #D8DEE9; 
+    background-color: #21252D; 
+}
+
+.view:backdrop, iconview:backdrop, .view text:backdrop, iconview text:backdrop, textview text:backdrop { 
+    color: #A0A8B8; 
+    background-color: #21252D; 
+}
+
+/* Labels */
+label { 
+    color: #D8DEE9; 
+}
+
+label selection { 
+    background-color: #81A1C1; 
+    color: #21252D; 
+}
+
+/* ===== MENUS ===== */
+
+menu, .menu, GtkMenu { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
+    border: 1px solid #434C5E; 
+}
+
+menuitem, .menuitem, GtkMenuItem { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
+}
+
+menuitem:hover, .menuitem:hover, GtkMenuItem:hover { 
+    background-color: #434C5E; 
+    color: #81A1C1; 
+}
+
+/* ===== BUTTONS ===== */
+
+button, GtkButton { 
+    color: #D8DEE9; 
+    border-color: #434C5E; 
+    background-color: #2E333F; 
+}
+
+button:hover, GtkButton:hover { 
+    color: #81A1C1; 
+    border-color: #434C5E; 
+    background-color: #434C5E; 
+}
+
+button:active, GtkButton:active, button:checked, GtkButton:checked { 
+    color: #21252D; 
+    background-color: #81A1C1; 
+}
+
+button:disabled, GtkButton:disabled { 
+    color: #434C5E; 
+    background-color: #2E333F; 
+}
+
+/* ===== ENTRIES ===== */
+
+entry, GtkEntry, spinbutton:not(.vertical) { 
+    color: #D8DEE9; 
+    border-color: #434C5E; 
+    background-color: #21252D; 
+    box-shadow: none; 
+}
+
+entry:focus, GtkEntry:focus { 
+    border-color: #81A1C1; 
+}
+
+entry:disabled, GtkEntry:disabled { 
+    color: #434C5E; 
+    background-color: #2E333F; 
+}
+
+/* ===== HEADERBAR/TOOLBAR ===== */
+
+headerbar, .titlebar, toolbar, .toolbar, GtkToolbar { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
+    border-bottom: 1px solid #434C5E; 
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar, .sidebar.view, GtkSidebar { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
+}
+
+/* ===== POPOVER ===== */
+
+popover, GtkPopover { 
+    background-color: #2E333F; 
+    color: #D8DEE9; 
+    border: 1px solid #434C5E; 
+}
+
+/* ===== TREEVIEW ===== */
+
+treeview, GtkTreeView, iconview { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
+}
+
+treeview.view row:selected, iconview.view row:selected { 
+    background-color: #434C5E; 
+    color: #81A1C1; 
+}
+
+treeview header button, GtkTreeView header button { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
+    border-bottom: 1px solid #434C5E; 
+}
+
+/* ===== SCROLLBAR ===== */
+
+scrollbar, GtkScrollbar { 
+    background-color: #21252D; 
+}
+
+scrollbar slider, GtkScrollbar slider { 
+    background-color: #2E333F; 
+    border: 1px solid #434C5E; 
+}
+
+scrollbar slider:hover, GtkScrollbar slider:hover { 
+    background-color: #434C5E; 
+}
+
+/* ===== PROGRESS ===== */
+
+progressbar, GtkProgressBar { 
+    background-color: #21252D; 
+}
+
+progressbar progress, GtkProgressBar progress { 
+    background-color: #81A1C1; 
+}
+
+/* ===== SWITCH ===== */
+
+switch, GtkSwitch { 
+    background-color: #21252D; 
+}
+
+switch:checked, GtkSwitch:checked { 
+    background-color: #81A1C1; 
+}
+
+/* ===== NOTEBOOK ===== */
+
+notebook, GtkNotebook { 
+    background-color: #21252D; 
+    border: 1px solid #434C5E; 
+}
+
+notebook tab, GtkNotebook tab { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
+}
+
+notebook tab:checked, GtkNotebook tab:checked { 
+    background-color: #21252D; 
+    color: #81A1C1; 
+}
+
+/* ===== FRAME ===== */
+
+frame, GtkFrame, .frame { 
+    border-color: #434C5E; 
+}
+
+/* ===== TOOLTIP ===== */
+
+tooltip, GtkTooltip { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
+    border: 1px solid #434C5E; 
+}
+
+/* ===== SPINNER ===== */
+
+spinner, GtkSpinner { 
+    color: #81A1C1; 
+}
+
+/* ===== CHECK/RADIO ===== */
+
+check, radio, GtkCheckButton, GtkRadioButton { 
+    color: #D8DEE9; 
+}
+
+check:checked, radio:checked, GtkCheckButton:checked, GtkRadioButton:checked { 
+    color: #81A1C1; 
+}
+
+/* ===== COMBOBOX ===== */
+
+combobox, GtkComboBox { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
+}
+
+/* ===== OSD ===== */
+
+.osd, popover.background.osd { 
+    background-color: #2E333F; 
+    color: #D8DEE9; 
+}
+
+/* ===== SCALE ===== */
+
+scale, GtkScale { 
+    background-color: #21252D; 
+}
+
+scale slider, GtkScale slider { 
+    background-color: #81A1C1; 
+    border-color: #434C5E; 
+}
+
+/* ===== INFOBAR ===== */
+
+infobar, GtkInfoBar { 
+    background-color: #21252D; 
+    border-bottom: 1px solid #434C5E; 
+}
+
+/* ===== MENUBAR & TOOLBAR TEXT COLORS ===== */
+
+menubar, GtkMenuBar { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
+}
+
+menuitem, GtkMenuItem { 
+    color: #D8DEE9; 
+}
+
+toolbar, GtkToolbar { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
+}
+
+toolbar label, GtkToolbar label { 
+    color: #D8DEE9; 
+}
+
+headerbar, .titlebar { 
+    background-color: #21252D; 
+    color: #D8DEE9; 
 }
