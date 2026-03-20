@@ -11,6 +11,9 @@ include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf"
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
 
+# Dynamic display configuration
+exec_always kanshi
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
