@@ -1,0 +1,2 @@
+# Ignore kanshi config (contains monitor serial numbers)
+kanshi/.config/kanshi/config
