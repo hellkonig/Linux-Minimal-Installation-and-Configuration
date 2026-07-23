@@ -157,7 +157,7 @@ git clone https://github.com/hellkonig/Linux-Minimal-Installation-and-Configurat
 cd ~/dotfiles
 
 # Stow all packages
-stow -t ~ alacritty bash fcitx5 fontconfig gtk-3.0 gtk-4.0 nvim sway waybar wofi
+stow -t ~ alacritty bash fcitx5 firefox fontconfig gtk-3.0 gtk-4.0 nvim sway waybar wofi
 ```
 
 ### Available Packages
@@ -167,6 +167,7 @@ stow -t ~ alacritty bash fcitx5 fontconfig gtk-3.0 gtk-4.0 nvim sway waybar wofi
 | `alacritty` | Terminal emulator | `~/.config/alacritty/` |
 | `bash` | Bash configuration | `~/.bashrc`, `~/.bash_profile` |
 | `fcitx5` | Chinese input method (Sway) | `~/.config/sway/config.d/fcitx5.conf` |
+| `firefox` | Conservative privacy baseline | `~/.config/firefox/` |
 | `fontconfig` | Font configuration | `~/.config/fontconfig/` |
 | `gtk-3.0` | GTK3 theme settings | `~/.config/gtk-3.0/` |
 | `gtk-4.0` | GTK4 theme settings | `~/.config/gtk-4.0/` |
@@ -190,6 +191,22 @@ stow -t ~ -R sway
 # Dry run (see what would happen without making changes)
 stow -t ~ -n sway
 ```
+
+### Firefox Privacy Baseline
+
+The Firefox package keeps a small `user.js` in version control without storing
+the generated profile name or mutable browser data. Stow the package, then link
+the file into Firefox's install-selected profile:
+
+```bash
+stow -t ~ firefox
+~/.config/firefox/install-user-js.sh
+```
+
+The installer refuses to overwrite an existing `user.js`. Restart Firefox after
+installing or changing the preferences. Firefox copies `user.js` values into the
+profile's `prefs.js`; removing a setting from `user.js` does not automatically
+restore that preference to its default.
 
 ### Important Notes
 
