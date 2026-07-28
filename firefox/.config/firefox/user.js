@@ -1,4 +1,4 @@
-// Firefox privacy baseline for a daily-use profile.
+// Firefox privacy and performance baseline for a daily-use profile.
 //
 // Keep this file small: Firefox applies these values at every startup. Remove
 // a preference from prefs.js as well if it is removed here and must return to
@@ -30,3 +30,13 @@ user_pref("browser.urlbar.suggest.quicksuggest.sponsored", false);
 // sites can still be granted permission explicitly.
 user_pref("permissions.default.desktop-notification", 2);
 
+// Keep session restore useful without carrying a large closed-tab backlog
+// between browser launches. Open tabs are still restored on demand, and
+// recently closed tabs remain available during the current browser session.
+user_pref("browser.sessionstore.max_tabs_undo", 10);
+user_pref("browser.sessionstore.max_windows_undo", 2);
+user_pref("browser.sessionstore.persist_closed_tabs_between_sessions", false);
+
+// On Linux, allow Firefox to unload inactive tabs if the system reaches real
+// memory pressure. Selecting an unloaded tab reloads it automatically.
+user_pref("browser.tabs.unloadOnLowMemory", true);

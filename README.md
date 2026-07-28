@@ -167,7 +167,7 @@ stow -t ~ alacritty bash fcitx5 firefox fontconfig gtk-3.0 gtk-4.0 nvim sway way
 | `alacritty` | Terminal emulator | `~/.config/alacritty/` |
 | `bash` | Bash configuration | `~/.bashrc`, `~/.bash_profile` |
 | `fcitx5` | Chinese input method (Sway) | `~/.config/sway/config.d/fcitx5.conf` |
-| `firefox` | Conservative privacy baseline | `~/.config/firefox/` |
+| `firefox` | Conservative privacy and performance baseline | `~/.config/firefox/` |
 | `fontconfig` | Font configuration | `~/.config/fontconfig/` |
 | `gtk-3.0` | GTK3 theme settings | `~/.config/gtk-3.0/` |
 | `gtk-4.0` | GTK4 theme settings | `~/.config/gtk-4.0/` |
@@ -192,7 +192,7 @@ stow -t ~ -R sway
 stow -t ~ -n sway
 ```
 
-### Firefox Privacy Baseline
+### Firefox Privacy and Performance Baseline
 
 The Firefox package keeps a small `user.js` in version control without storing
 the generated profile name or mutable browser data. Stow the package, then link
@@ -207,6 +207,10 @@ The installer refuses to overwrite an existing `user.js`. Restart Firefox after
 installing or changing the preferences. Firefox copies `user.js` values into the
 profile's `prefs.js`; removing a setting from `user.js` does not automatically
 restore that preference to its default.
+
+The performance settings retain normal session restore while limiting closed-tab
+state kept between launches. On Linux, inactive tabs may also be unloaded
+automatically during genuine memory pressure and will reload when selected.
 
 ### Important Notes
 
