@@ -77,6 +77,20 @@ menuitem:hover, .menuitem:hover, GtkMenuItem:hover {
     color: #81A1C1; 
 }
 
+/* Labels and indicators need explicit overrides of their normal colors. */
+menuitem:disabled,
+menuitem:disabled label,
+menuitem:disabled image,
+menuitem:disabled check,
+menuitem:disabled radio,
+menuitem:disabled arrow {
+    color: #434C5E;
+}
+
+menuitem:disabled {
+    background-color: #21252D;
+}
+
 /* ===== BUTTONS ===== */
 
 button, GtkButton { 
@@ -149,7 +163,8 @@ treeview, GtkTreeView, iconview {
     color: #D8DEE9; 
 }
 
-treeview.view row:selected, iconview.view row:selected { 
+/* GTK3 draws selected items on the view node; there is no row CSS node. */
+treeview.view:selected, iconview.view:selected {
     background-color: #434C5E; 
     color: #81A1C1; 
 }

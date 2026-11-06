@@ -35,7 +35,7 @@
 @define-color insensitive_bg_color #2E333F;
 
 @define-color link_color #88C0D0;
-@define88C0D-color link_visited_color #5E81AC;
+@define-color link_visited_color #5E81AC;
 
 @define-color window_bg_color #21252D;
 @define-color window_fg_color #D8DEE9;
