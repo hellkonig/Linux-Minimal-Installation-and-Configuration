@@ -157,7 +157,7 @@ git clone https://github.com/hellkonig/Linux-Minimal-Installation-and-Configurat
 cd ~/dotfiles
 
 # Stow all packages
-stow -t ~ alacritty bash fcitx5 firefox fontconfig gtk-3.0 gtk-4.0 nvim sway waybar wofi
+stow -t ~ alacritty bash fcitx5 firefox fontconfig gtk-3.0 gtk-4.0 nvim sway themes waybar wofi
 ```
 
 ### Available Packages
@@ -173,6 +173,7 @@ stow -t ~ alacritty bash fcitx5 firefox fontconfig gtk-3.0 gtk-4.0 nvim sway way
 | `gtk-4.0` | GTK4 theme settings | `~/.config/gtk-4.0/` |
 | `nvim` | Neovim editor | `~/.config/nvim/` |
 | `sway` | Wayland window manager | `~/.config/sway/` |
+| `themes` | Nord-Darker base themes for GTK3 and GTK4 | `~/.themes/` |
 | `waybar` | Status bar for Wayland | `~/.config/waybar/` |
 | `wofi` | Application launcher | `~/.config/wofi/` |
 
@@ -190,6 +191,26 @@ stow -t ~ -R sway
 
 # Dry run (see what would happen without making changes)
 stow -t ~ -n sway
+```
+
+### Nord GTK Theme
+
+Stow `themes`, `gtk-3.0`, `gtk-4.0`, and `sway` together. Sway applies
+`Nord-Darker` and `prefer-dark` to the desktop settings on startup and reload;
+Wayland applications can use these settings in preference to `settings.ini`.
+The helper uses Python 3 and its GIO bindings (`python3-gi` on Debian), without
+requiring the `gsettings` command. To apply it immediately:
+
+```bash
+"$HOME/.config/sway/scripts/apply-gtk-theme.sh"
+```
+
+The GTK4 overrides target GTK 4.16+ and support libadwaita's CSS color variables.
+After editing GTK CSS, reopen affected applications. For Firefox's portal file
+picker, close any open file dialog and reload its separate service:
+
+```bash
+systemctl --user restart xdg-desktop-portal-gtk.service
 ```
 
 ### Firefox Privacy and Performance Baseline

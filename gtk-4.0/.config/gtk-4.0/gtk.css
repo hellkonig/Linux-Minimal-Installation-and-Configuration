@@ -12,6 +12,11 @@
 
 /* Accent and contextual colors from Nord Darker */
 @define-color accent_color #81A1C1;
+@define-color accent_bg_color #81A1C1;
+@define-color accent_fg_color #21252D;
+@define-color destructive_color #BF616A;
+@define-color destructive_bg_color #BF616A;
+@define-color destructive_fg_color #21252D;
 @define-color error_color #BF616A;
 @define-color warning_color #D08770;
 @define-color success_color #A3BE8C;
@@ -19,15 +24,130 @@
 @define-color insensitive_fg_color #434C5E;
 @define-color insensitive_bg_color #2E333F;
 
+/* Surface colors for GTK4 and older libadwaita applications. */
+@define-color window_bg_color #21252D;
+@define-color window_fg_color #D8DEE9;
+@define-color view_bg_color #21252D;
+@define-color view_fg_color #D8DEE9;
+@define-color headerbar_bg_color #21252D;
+@define-color headerbar_fg_color #D8DEE9;
+@define-color headerbar_backdrop_color #21252D;
+@define-color headerbar_border_color #434C5E;
+@define-color sidebar_bg_color #2E333F;
+@define-color sidebar_fg_color #D8DEE9;
+@define-color sidebar_backdrop_color #2E333F;
+@define-color secondary_sidebar_bg_color #21252D;
+@define-color secondary_sidebar_fg_color #D8DEE9;
+@define-color secondary_sidebar_backdrop_color #21252D;
+@define-color card_bg_color #2E333F;
+@define-color card_fg_color #D8DEE9;
+@define-color dialog_bg_color #21252D;
+@define-color dialog_fg_color #D8DEE9;
+@define-color popover_bg_color #2E333F;
+@define-color popover_fg_color #D8DEE9;
+
+/* libadwaita 1.6+ uses CSS variables for these surfaces and actions. */
+:root {
+    --window-bg-color: @window_bg_color;
+    --window-fg-color: @window_fg_color;
+    --view-bg-color: @view_bg_color;
+    --view-fg-color: @view_fg_color;
+    --headerbar-bg-color: @headerbar_bg_color;
+    --headerbar-fg-color: @headerbar_fg_color;
+    --headerbar-backdrop-color: @headerbar_backdrop_color;
+    --headerbar-border-color: @headerbar_border_color;
+    --sidebar-bg-color: @sidebar_bg_color;
+    --sidebar-fg-color: @sidebar_fg_color;
+    --sidebar-backdrop-color: @sidebar_backdrop_color;
+    --secondary-sidebar-bg-color: @secondary_sidebar_bg_color;
+    --secondary-sidebar-fg-color: @secondary_sidebar_fg_color;
+    --secondary-sidebar-backdrop-color: @secondary_sidebar_backdrop_color;
+    --card-bg-color: @card_bg_color;
+    --card-fg-color: @card_fg_color;
+    --dialog-bg-color: @dialog_bg_color;
+    --dialog-fg-color: @dialog_fg_color;
+    --popover-bg-color: @popover_bg_color;
+    --popover-fg-color: @popover_fg_color;
+    --accent-bg-color: @accent_bg_color;
+    --accent-fg-color: @accent_fg_color;
+    --accent-color: @accent_color;
+    --destructive-bg-color: @destructive_bg_color;
+    --destructive-fg-color: @destructive_fg_color;
+    --destructive-color: @destructive_color;
+    --success-bg-color: @success_color;
+    --success-fg-color: @accent_fg_color;
+    --success-color: @success_color;
+    --warning-bg-color: @warning_color;
+    --warning-fg-color: @accent_fg_color;
+    --warning-color: @warning_color;
+    --error-bg-color: @error_color;
+    --error-fg-color: @accent_fg_color;
+    --error-color: @error_color;
+}
+
+.background, headerbar, .titlebar {
+    background-color: @window_bg_color;
+    color: @window_fg_color;
+}
+
+headerbar, .titlebar {
+    background-image: none;
+    box-shadow: none;
+}
+
 button {
     background-color: #2E333F; /* Nord Darker black */
     color: #D8DEE9; /* Nord Darker text */
+    border-color: #434C5E;
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
 }
 button:hover {
     background-color: #434C5E; /* Nord Darker selection background */
     color: #81A1C1; /* Nord Darker selection text */
 }
-button:active {
+button:active, button:checked {
     background-color: #81A1C1; /* Nord Darker bright blue */
     color: #21252D;
+}
+
+button:disabled {
+    background-color: #2E333F;
+    color: #434C5E;
+}
+
+button.suggested-action:not(:disabled) {
+    background-color: #81A1C1;
+    border-color: #81A1C1;
+    color: #21252D;
+}
+
+button.suggested-action:hover:not(:disabled) {
+    background-color: #88C0D0;
+}
+
+button.suggested-action:active:not(:disabled),
+button.suggested-action:checked:not(:disabled) {
+    background-color: #5E81AC;
+    color: #ECEFF4;
+}
+
+button.destructive-action:not(:disabled) {
+    background-color: #BF616A;
+    border-color: #BF616A;
+    color: #21252D;
+}
+
+button.destructive-action:hover:not(:disabled) {
+    background-color: #D08770;
+}
+
+button.destructive-action:active:not(:disabled) {
+    background-color: #BF616A;
+    border-color: #D8DEE9;
+}
+
+button label, button image {
+    color: inherit;
 }

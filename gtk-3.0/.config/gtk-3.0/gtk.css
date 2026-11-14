@@ -97,6 +97,10 @@ button, GtkButton {
     color: #D8DEE9; 
     border-color: #434C5E; 
     background-color: #2E333F; 
+    /* Adwaita gradients otherwise cover the Nord background color. */
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
 }
 
 button:hover, GtkButton:hover { 
@@ -113,6 +117,37 @@ button:active, GtkButton:active, button:checked, GtkButton:checked {
 button:disabled, GtkButton:disabled { 
     color: #434C5E; 
     background-color: #2E333F; 
+}
+
+button.suggested-action:not(:disabled) {
+    background-color: #81A1C1;
+    border-color: #81A1C1;
+    color: #21252D;
+}
+
+button.suggested-action:hover:not(:disabled) {
+    background-color: #88C0D0;
+}
+
+button.suggested-action:active:not(:disabled),
+button.suggested-action:checked:not(:disabled) {
+    background-color: #5E81AC;
+    color: #ECEFF4;
+}
+
+button.destructive-action:not(:disabled) {
+    background-color: #BF616A;
+    border-color: #BF616A;
+    color: #21252D;
+}
+
+button.destructive-action:hover:not(:disabled) {
+    background-color: #D08770;
+}
+
+button.destructive-action:active:not(:disabled) {
+    background-color: #BF616A;
+    border-color: #D8DEE9;
 }
 
 /* ===== ENTRIES ===== */
@@ -137,6 +172,9 @@ entry:disabled, GtkEntry:disabled {
 
 headerbar, .titlebar, toolbar, .toolbar, GtkToolbar { 
     background-color: #21252D; 
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
     color: #D8DEE9; 
     border-bottom: 1px solid #434C5E; 
 }
@@ -312,4 +350,10 @@ toolbar label, GtkToolbar label {
 headerbar, .titlebar { 
     background-color: #21252D; 
     color: #D8DEE9; 
+}
+
+/* Keep button contents readable in active, destructive and disabled states.
+ * This must follow the general toolbar label overrides above. */
+button label, button image {
+    color: inherit;
 }
