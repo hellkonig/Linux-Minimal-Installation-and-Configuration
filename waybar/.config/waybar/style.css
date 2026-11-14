@@ -1,20 +1,14 @@
-/* Nord Darker Waybar Theme — based on Alacritty config */
-
-/* Base palette */
+/* Nord Darker Waybar theme */
 @define-color bg #21252D;
+@define-color surface #2E333F;
 @define-color fg #D8DEE9;
 @define-color accent #81A1C1;
 @define-color highlight #88C0D0;
 @define-color muted #434C5E;
 @define-color warning #EBCB8B;
 @define-color error #BF616A;
-@define-color success #A3BE8C;
-@define-color orange #D08770;
-@define-color magenta #B48EAD;
-@define-color cyan #8FBCBB;
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
     border: none;
     font-family: JetBrainsMonoNerdFont, FontAwesome, monospace;
     font-size: 13px;
@@ -24,59 +18,34 @@ window#waybar {
     background: @bg;
     border-bottom: 3px solid @bg;
     color: @fg;
-    transition-property: background-color;
-    transition-duration: .5s;
 }
 
 window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
-
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
+    background: transparent;
+    /* Reserve indicator space so hovering does not move the text. */
+    box-shadow: inset 0 -2px transparent;
     border-radius: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
-}
-
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
+    background: @surface;
+    box-shadow: inset 0 -2px @accent;
 }
 
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
     color: @fg;
+    box-shadow: inset 0 -3px transparent;
 }
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.focused {
@@ -87,11 +56,6 @@ button:hover {
 #workspaces button.urgent {
     background: @error;
     color: @fg;
-}
-
-#mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
 }
 
 #clock,
@@ -105,15 +69,17 @@ button:hover {
 #pulseaudio,
 #wireplumber,
 #custom-media,
+#custom-power,
 #tray,
 #mode,
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
-#mpd
-#custom-* {
-    padding: 0 10px;
-    margin: 0 4px;
+#mpd,
+#language,
+#keyboard-state {
+    padding: 0 8px;
+    margin: 0 2px;
     color: @fg;
 }
 
@@ -122,87 +88,50 @@ button:hover {
     margin: 0 4px;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
     margin-left: 0;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
 }
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+/* Use the same subtle hover for modules with controls or alternate formats. */
+#clock:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover,
+#wireplumber:hover,
+#custom-power:hover,
+#power-profiles-daemon:hover {
+    background: @muted;
 }
 
-/* Using steps() instead of linear as a timing function to limit cpu usage */
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+#mode,
+#idle_inhibitor.activated,
+#keyboard-state > label.locked {
+    background: @surface;
+    color: @highlight;
+    box-shadow: inset 0 -2px @accent;
 }
 
-#power-profiles-daemon {
-    padding-right: 15px;
-}
-
-#power-profiles-daemon.performance {
-    background-color: #f53c3c;
-    color: #ffffff;
-}
-
-#power-profiles-daemon.balanced {
-    background-color: #2980b9;
-    color: #ffffff;
-}
-
+#power-profiles-daemon.performance,
+#power-profiles-daemon.balanced,
 #power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
-    color: #000000;
+    color: @accent;
 }
 
 label:focus {
-    background-color: #000000;
+    background: @surface;
 }
 
-#pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
-}
-
-#wireplumber {
-    background-color: #fff0f5;
-    color: #000000;
-}
-
+#pulseaudio.muted,
 #wireplumber.muted {
-    background-color: #f53c3c;
+    color: @accent;
 }
 
 #custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
     min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
 }
 
 #tray > .passive {
@@ -211,40 +140,25 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background: @surface;
+    color: @warning;
 }
 
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
-}
-
-#language {
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
+#language,
 #keyboard-state {
-    padding: 0 0px;
-    margin: 0 5px;
     min-width: 16px;
 }
 
 #keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+    padding: 0 4px;
 }
 
 #scratchpad {
-    background: rgba(0, 0, 0, 0.2);
+    background: @surface;
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+    background: transparent;
 }
 
 #privacy {
@@ -252,18 +166,18 @@ label:focus {
 }
 
 #privacy-item {
-    padding: 0 5px;
-    color: white;
+    padding: 0 8px;
+    background: @surface;
+    color: @accent;
 }
 
-#privacy-item.screenshare {
-    background-color: #cf5700;
+/* Warnings remain distinct; critical states stay steady rather than flashing. */
+#battery.warning:not(.charging):not(.plugged) {
+    color: @warning;
 }
 
-#privacy-item.audio-in {
-    background-color: #1ca000;
-}
-
-#privacy-item.audio-out {
-    background-color: #0069d4;
+#battery.critical:not(.charging):not(.plugged),
+#temperature.critical {
+    background: @error;
+    color: @bg;
 }
