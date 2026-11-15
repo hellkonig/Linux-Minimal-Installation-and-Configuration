@@ -2,6 +2,7 @@
 @define-color bg #21252D;
 @define-color surface #2E333F;
 @define-color fg #D8DEE9;
+@define-color snow #ECEFF4;
 @define-color accent #81A1C1;
 @define-color highlight #88C0D0;
 @define-color muted #434C5E;
@@ -45,12 +46,12 @@ button:hover {
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -3px @snow;
 }
 
 #workspaces button.focused {
     background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -3px @snow;
 }
 
 #workspaces button.urgent {
@@ -76,11 +77,23 @@ button:hover {
 #scratchpad,
 #power-profiles-daemon,
 #mpd,
-#language,
-#keyboard-state {
+#language {
     padding: 0 8px;
     margin: 0 2px;
     color: @fg;
+}
+
+#pulseaudio,
+#network,
+#battery,
+#custom-power {
+    /* Reserve the full width of icons so they do not overhang the padding. */
+    font-family: "JetBrainsMono Nerd Font Propo", monospace;
+}
+
+#custom-power {
+    padding: 0 12px;
+    margin-right: 0;
 }
 
 #window,
@@ -96,10 +109,7 @@ button:hover {
     margin-right: 0;
 }
 
-/* Use the same subtle hover for modules with controls or alternate formats. */
-#clock:hover,
-#battery:hover,
-#network:hover,
+/* Highlight controls with click or scroll actions. */
 #pulseaudio:hover,
 #wireplumber:hover,
 #custom-power:hover,
@@ -127,7 +137,7 @@ label:focus {
 
 #pulseaudio.muted,
 #wireplumber.muted {
-    color: @accent;
+    color: @fg;
 }
 
 #custom-media {
@@ -144,13 +154,25 @@ label:focus {
     color: @warning;
 }
 
-#language,
-#keyboard-state {
+#language {
     min-width: 16px;
 }
 
+#keyboard-state {
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
 #keyboard-state > label {
-    padding: 0 4px;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+#keyboard-state > label.locked {
+    padding: 0 8px;
+    margin: 0 2px;
 }
 
 #scratchpad {

@@ -10,7 +10,6 @@
         "sway/workspaces",
         "sway/mode",
         "sway/scratchpad",
-        "custom/media",
         "sway/window"
     ],
     "modules-center": [
@@ -18,27 +17,27 @@
     "modules-right": [
         "pulseaudio",
         "network",
-        "cpu",
-        "memory",
-        "temperature",
         "keyboard-state",
         "battery",
-        "battery#bat2",
+        "tray",
         "clock",
-        "custom/power",
-        "tray"
+        "custom/power"
     ],
     "keyboard-state": {
-        "numlock": true,
+        "numlock": false,
         "capslock": true,
-        "format": "{name} {icon}",
+        "format": "{icon}",
         "format-icons": {
-            "locked": "",
-            "unlocked": ""
+            "locked": "Caps Lock",
+            "unlocked": ""
         }
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/window": {
+        "max-length": 40,
+        "tooltip": true
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
@@ -60,8 +59,8 @@
     },
     "clock": {
         // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%H:%M}",
+        "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -93,7 +92,7 @@
         "format-full": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "cursor": "default",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
@@ -116,19 +115,20 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{signalStrength}% ",
         "format-ethernet": "",
-        "tooltip-format": "{essid} via {ifname} ({gwaddr})",
+        "tooltip-format-wifi": "{essid}\nInterface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}",
+        "tooltip-format-ethernet": "Ethernet\nInterface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}",
+        "tooltip-format": "Interface: {ifname}\nConnected · No IP address",
+        "tooltip-format-disconnected": "Disconnected",
         "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "󰌙",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "󰌙"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": "{volume}% ",
+        "format-muted": "{volume}% ",
+        "tooltip-format": "{desc}\nClick: sound settings · Scroll: volume",
         "format-icons": {
             "headphone": "",
             "hands-free": "󰋎",
@@ -153,7 +153,7 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format" : "⏻ ",
+        "format" : "⏻",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "/usr/share/waybar/custom_modules/power_menu.xml", // Menu file in resources folder
